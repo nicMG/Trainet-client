@@ -9,6 +9,7 @@
     "@fullcalendar/interaction": "^5.10.1",
     "@fullcalendar/react": "^5.10.1",
     "@kommunicate/kommunicate-chatbot-plugin": "0.0.5",
+    "@mui/icons-material": "^5.2.1",
     "@mui/material": "^5.2.2",
     "@stripe/react-stripe-js": "^1.6.0",
     "@stripe/stripe-js": "^1.21.2",
