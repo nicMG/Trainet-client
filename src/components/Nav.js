@@ -103,7 +103,7 @@ const ResponsiveAppBar = (props) => {
                             <MenuItem onClick={handleCloseNavMenu}>
                   <Link to={"/"}><Typography textAlign="center">Home</Typography></Link>
                 </MenuItem>
-                <MenuItem onClick={btnLogOut}>
+                <MenuItem>
                   <Link to={"/store"}><Typography textAlign="center">Store</Typography></Link>
                 </MenuItem>
           </Box>

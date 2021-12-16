@@ -10,7 +10,7 @@ import Button from '@mui/material/Button';
 import "./ItemDetails.css"
 
 
-function ItemDetails(props) {
+function YourWorkouts(props) {
 
     const {id} = useParams()
     const [workout, setWorkout] = useState(null)
@@ -41,9 +41,9 @@ function ItemDetails(props) {
             <p>{workout.description}</p>
 
 
-            <Button variant="contained" onClick={() => {btnAdd(id, user._id)}}>Add</Button>
+
         </div>
     )
 }
 
-export default ItemDetails
+export default YourWorkouts

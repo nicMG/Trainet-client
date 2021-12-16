@@ -62,12 +62,6 @@ function Profile(props) {
                   user.stats ? <h3>Deadlift: {user.stats.deadlift}</h3>
                   : ""
                 }
-                {/* <h3>Height: {user.stats.height}</h3>
-                <h3>Weight: {user.stats.weight}</h3>
-                <hr/>
-                <h3>Bench Press: {user.stats.bench}</h3>
-                <h3>Squat: {user.stats.squat}</h3>
-                <h3>Deadlift: {user.stats.deadlift}</h3> */}
               </div>
               </div>
               
@@ -106,7 +100,7 @@ function Profile(props) {
                       <Typography>
                         {ele.shortDescription}
                         <br></br>
-                        <Link to={`/store/${ele._id}`}>Details</Link>
+                        <Link to={`/workout/${ele._id}`}>Details</Link>
                       </Typography>
                     </AccordionDetails>
                   </Accordion>

@@ -25,7 +25,6 @@ function Store() {
         }
 
         getData()
-        console.log(workouts)
     }, [])
 
     if(!workouts.length) {

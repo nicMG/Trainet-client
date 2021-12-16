@@ -16,6 +16,7 @@ import SignUpCoach from "./components/SignUpCoach";
 import CreateWorkout from "./components/CreateWorkout";
 import EditWorkout from "./components/EditWorkout";
 import EditProfile from "./components/EditProfile";
+import YourWorkouts from "./components/YourWorkouts";
 
 
 function App() {
@@ -53,11 +54,9 @@ function App() {
       }
       
       let response = await axios.post(`${API_URL}/signin`, newUser, {withCredentials: true})
-      console.log(response.data)
-      setUser(newUser)
-      console.log(user)
-      navigate("/profile")
 
+      setUser(response.data)
+      navigate("/profile")
     } catch (error) {
       setError(error.response.data.error)
     }
@@ -73,7 +72,7 @@ function App() {
       
       let response = await axios.post(`${API_URL}/signin/coach`, newUser, {withCredentials: true})
       console.log(response.data)
-      setUser(newUser)
+      setUser(response.data)
       navigate("/profile")
 
     } catch (error) {
@@ -187,6 +186,7 @@ if(fetchingUser){
         <Route path="/*" element={<Errorpage/>}/>
         <Route path="/store" element={<Store/>}/>
         <Route path="/store/:id" element={<ItemDetails btnAdd={handleAddWorkout}/>}/>
+        <Route path="/workout/:id" element={<YourWorkouts/>}/>
         <Route path="/profile" element={<Profile userTest={user}/>}/>
         <Route path="/profile/edit" element={<EditProfile btnEdit={handleEditProfile}/>}/>
         <Route path="/workouts/create" element={<CreateWorkout btnSubmit={handleCreateWk}/>}/>
