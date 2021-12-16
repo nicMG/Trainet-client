@@ -1,0 +1,19 @@
+.box {
+  display: flex;
+  text-align: center;
+  /* background-color: gold; */
+  flex-direction: column;
+  justify-content: center;
+  height: 50vh;
+  width: 50vh;
+}
+
+.all {
+  /* background-color: gray; */
+  height: 70vh;
+}
+
+.box h1 {
+  font-size: 100px;
+  margin-bottom: -10px;
+}

@@ -1,0 +1,41 @@
+.all {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 15px;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.ProfileCard {
+  max-width: 600px;
+}
+
+.ProfileCard img {
+  width: 450;
+  height: 450;
+  border-radius: 5px;
+}
+
+.header {
+  display: flex;
+}
+
+.stats {
+  position: relative;
+  top: 70px;
+  right: 20px;
+}
+
+.routines-list {
+  margin-top: 20px;
+  min-width: 650px;
+}
+
+.routine-item {
+  margin: 5px;
+}
+
+.routine-btn {
+  margin-top: 70px;
+}

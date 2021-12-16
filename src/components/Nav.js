@@ -1,4 +1,5 @@
-import * as React from 'react';
+
+import React, { useContext } from 'react'
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
@@ -12,11 +13,13 @@ import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import { Link } from 'react-router-dom';
+import { UserContext } from '../context/app.context';
 
-const pages = ['Home', 'Store'];
-const settings = ['Profile', 'Logout'];
+
 
 const ResponsiveAppBar = (props) => {
+
+  const {user} = useContext(UserContext)
 
   const {btnLogOut} = props
 
@@ -40,7 +43,7 @@ const ResponsiveAppBar = (props) => {
 
   return (
     <AppBar position="static">
-      <Container maxWidth="xl">
+      <Container maxWidth="xl" >
         <Toolbar disableGutters>
           <Typography
             variant="h6"
@@ -48,7 +51,7 @@ const ResponsiveAppBar = (props) => {
             component="div"
             sx={{ mr: 2, display: { xs: 'none', md: 'flex' } }}
           >
-            LOGO
+            TRAINET
           </Typography>
 
           <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
@@ -80,11 +83,12 @@ const ResponsiveAppBar = (props) => {
                 display: { xs: 'block', md: 'none' },
               }}
             >
-              {pages.map((page) => (
-                <MenuItem key={page} onClick={handleCloseNavMenu}>
-                  <Typography textAlign="center">{page}</Typography>
+                <MenuItem onClick={handleCloseNavMenu}>
+                  <Link to={"/"}><Typography textAlign="center">Home</Typography></Link>
                 </MenuItem>
-              ))}
+                <MenuItem onClick={btnLogOut}>
+                  <Link to={"/store"}><Typography textAlign="center">Store</Typography></Link>
+                </MenuItem>
             </Menu>
           </Box>
           <Typography
@@ -93,24 +97,21 @@ const ResponsiveAppBar = (props) => {
             component="div"
             sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}
           >
-            LOGO
+            TRAINET
           </Typography>
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
-            {pages.map((page) => (
-              <Button
-                key={page}
-                onClick={handleCloseNavMenu}
-                sx={{ my: 2, color: 'white', display: 'block' }}
-              >
-                {page}
-              </Button>
-            ))}
+                            <MenuItem onClick={handleCloseNavMenu}>
+                  <Link to={"/"}><Typography textAlign="center">Home</Typography></Link>
+                </MenuItem>
+                <MenuItem onClick={btnLogOut}>
+                  <Link to={"/store"}><Typography textAlign="center">Store</Typography></Link>
+                </MenuItem>
           </Box>
 
           <Box sx={{ flexGrow: 0 }}>
             <Tooltip title="Open settings">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
+                <Avatar alt="Nico" src="/static/images/avatar/1.jpg" />
               </IconButton>
             </Tooltip>
             <Menu
@@ -133,10 +134,12 @@ const ResponsiveAppBar = (props) => {
                 <MenuItem onClick={handleCloseNavMenu}>
                   <Link to={"/profile"}><Typography textAlign="center">Profile</Typography></Link>
                 </MenuItem>
-                <MenuItem onClick={btnLogOut}>
+                <MenuItem onClick={handleCloseNavMenu}>
+                  <Link to={"/signin"}><Typography textAlign="center">SignIn</Typography></Link>
+                </MenuItem>
+                  <MenuItem onClick={btnLogOut}>
                   <Typography textAlign="center">Logout</Typography>
                 </MenuItem>
-
             </Menu>
           </Box>
         </Toolbar>

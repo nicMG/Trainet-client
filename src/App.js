@@ -56,7 +56,7 @@ function App() {
       console.log(response.data)
       setUser(newUser)
       console.log(user)
-      navigate("/")
+      navigate("/profile")
 
     } catch (error) {
       setError(error.response.data.error)
@@ -74,6 +74,7 @@ function App() {
       let response = await axios.post(`${API_URL}/signin/coach`, newUser, {withCredentials: true})
       console.log(response.data)
       setUser(newUser)
+      navigate("/profile")
 
     } catch (error) {
       setError(error.response.data.error)
@@ -83,6 +84,7 @@ function App() {
     const handleLogOut = async () => {
     await axios.post(`${API_URL}/logout`, {}, {withCredentials: true})
     setUser(null)
+    navigate("/")
   }
 
   const handleCreateWk = async (event) => {
@@ -91,23 +93,38 @@ function App() {
     let imageForm = new FormData()
     imageForm.append("imageUrl", event.target.myImage.files[0])
     let imgResponse = await axios.post(`${API_URL}/upload`, imageForm)
+    // console.log(event.target.name.value)
 
     let newWorkOut = {
       name: event.target.name.value,
+      shortDescription: event.target.shortDescription.value,
       description: event.target.description.value,
       image: imgResponse.data.image,
     }
     let response = await axios.post(`${API_URL}/workouts/create`, newWorkOut, {withCredentials: true})
     setWorkOuts([response.data, ...workOuts])
+    navigate("/store")
   }
 
   const handleEditProfile = async (event, id) => {
     event.preventDefault()
+
+    let imageForm = new FormData()
+    imageForm.append("imageUrl", event.target.myImage.files[0])
+    let imgResponse = await axios.post(`${API_URL}/upload`, imageForm)
+    
     let editedProfile = {
       name: event.target.name.value,
-      description: event.target.description.value
+      // description: event.target.description.value,
+      image: imgResponse.data.image,
+      height: event.target.height.value,
+      weight: event.target.weight.value,
+      bench: event.target.bench.value,
+      squat: event.target.squat.value,
+      deadlift: event.target.deadlift.value,
+
     }
-  
+    console.log(editedProfile)
     if(user.isCoach){
 
     let response = await axios.patch(`${API_URL}/profile/coach/${id}`, editedProfile, {withCredentials: true})
@@ -115,22 +132,43 @@ function App() {
 
     let updatedUser = user
     updatedUser.name = response.data.name
-    updatedUser.description = response.data.description
+    // updatedUser.description = response.data.description
+    updatedUser.image = response.data.image
 
     setUser(updatedUser)
+    navigate("/profile")
     console.log("coach")
 
     } else {
       
     let response = await axios.patch(`${API_URL}/profile/${id}`, editedProfile, {withCredentials: true})
 
-    let updatedUser = user
-    updatedUser.name = response.data.name
-    updatedUser.description = response.data.description
+    // let updatedUser = user
+    // updatedUser.name = response.data.name
+    // updatedUser.description = response.data.description
+    // updatedUser.image = response.data.image
 
-    setUser(updatedUser)
+
+    setUser(response.data)
+    navigate("/profile")
     console.log("user", response.data)
     }
+  }
+
+  const handleAddWorkout = async (workoutId, profileId) => {
+
+    let addedRoutine = {
+      workoutId: workoutId
+    }
+    
+    let response = await axios.patch(`${API_URL}/profile/${profileId}`,addedRoutine, {withCredentials: true})
+
+    let updatedUser = user
+    updatedUser.routines = response.data.routines
+
+    setUser(updatedUser)
+    navigate("/profile")
+    console.log(user)
   }
 
 if(fetchingUser){
@@ -148,8 +186,8 @@ if(fetchingUser){
         <Route path="/signup/coach" element={<SignUpCoach/>}/>
         <Route path="/*" element={<Errorpage/>}/>
         <Route path="/store" element={<Store/>}/>
-        <Route path="/store/:id" element={<ItemDetails/>}/>
-        <Route path="/profile" element={<Profile fetching={fetchingUser}/>}/>
+        <Route path="/store/:id" element={<ItemDetails btnAdd={handleAddWorkout}/>}/>
+        <Route path="/profile" element={<Profile userTest={user}/>}/>
         <Route path="/profile/edit" element={<EditProfile btnEdit={handleEditProfile}/>}/>
         <Route path="/workouts/create" element={<CreateWorkout btnSubmit={handleCreateWk}/>}/>
         <Route path="/workouts/:id/edit" element={<EditWorkout/>}/>
