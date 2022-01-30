@@ -1,3 +1,32 @@
 .edit-textfield {
   width: 500px;
 }
+
+body {
+  height: 100%;
+  background-color: #f8c63c;
+}
+
+.create-main {
+  display: flex;
+  background-color: #f8c63c;
+  margin: 0;
+  height: 93.15vh;
+}
+
+.tarjeta-create {
+  margin: 2em;
+  background-color: white;
+  width: 500;
+  padding: 1.4em 1.8em;
+  border-radius: 5px;
+  box-shadow: 5px 10px #3e1c13;
+}
+
+.img-box-create {
+  border: #808080 1px solid;
+  width: auto;
+  padding: 15px;
+  border-radius: 5px;
+  background-color: #f8c63c;
+}

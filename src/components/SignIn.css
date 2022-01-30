@@ -1,0 +1,16 @@
+.signin-main {
+  background-color: #f8c63c;
+  margin-top: 0;
+  height: 93.2vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.tarjeta {
+  margin-top: -10vh;
+  background-color: white;
+  padding: 1.5em 1.8em;
+  border-radius: 5px;
+  box-shadow: 5px 10px #3e1c13;
+}

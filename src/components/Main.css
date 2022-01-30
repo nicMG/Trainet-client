@@ -1,17 +1,24 @@
-.box {
+.all-prime {
+  margin: 0;
+  height: 93.2vh;
+  background-color: #f8c63c;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.all-main {
+  margin-top: -150px;
   display: flex;
   text-align: center;
   flex-direction: column;
   justify-content: center;
-  height: 50vh;
-  width: 50vh;
 }
 
-/* .all {
-  height: 70vh;
-} */
-
-.box h1 {
-  font-size: 100px;
+.all-main h1 {
+  margin: 0;
+  font-size: 150px;
   margin-bottom: -10px;
+  color: #3e1c13;
 }

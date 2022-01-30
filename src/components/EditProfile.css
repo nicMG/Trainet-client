@@ -1,3 +1,30 @@
 .edit-textfield {
-  width: 500px;
+  width: 550px;
+}
+
+.edit-profile-main {
+  background-color: #f8c63c;
+  display: flex;
+  color: #3e1c13;
+}
+
+.bro {
+  background-color: bisque;
+}
+
+.tarjeta-perfil {
+  margin: 2em;
+  background-color: white;
+  width: 500;
+  padding: 1.4em 1.8em;
+  border-radius: 5px;
+  box-shadow: 5px 10px #3e1c13;
+}
+
+.img-box-profile {
+  border: #808080 1px solid;
+  width: auto;
+  padding: 15px;
+  border-radius: 5px;
+  background-color: #f8c63c;
 }

@@ -1,5 +1,4 @@
-
-import React, { useContext } from 'react'
+import React, { useContext } from 'react';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
@@ -14,14 +13,12 @@ import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import { Link } from 'react-router-dom';
 import { UserContext } from '../context/app.context';
-
-
+import AccountCircle from '@mui/icons-material/AccountCircle';
 
 const ResponsiveAppBar = (props) => {
+  const { user } = useContext(UserContext);
 
-  const {user} = useContext(UserContext)
-
-  const {btnLogOut} = props
+  const { btnLogOut } = props;
 
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
@@ -42,11 +39,11 @@ const ResponsiveAppBar = (props) => {
   };
 
   return (
-    <AppBar position="static">
-      <Container maxWidth="xl" >
+    <AppBar position="static" color="inherit">
+      <Container maxWidth="xl">
         <Toolbar disableGutters>
           <Typography
-            variant="h6"
+            variant="h4"
             noWrap
             component="div"
             sx={{ mr: 2, display: { xs: 'none', md: 'flex' } }}
@@ -83,12 +80,20 @@ const ResponsiveAppBar = (props) => {
                 display: { xs: 'block', md: 'none' },
               }}
             >
+              <Link to={'/'} style={{ textDecoration: 'none', color: 'black' }}>
                 <MenuItem onClick={handleCloseNavMenu}>
-                  <Link to={"/"}><Typography textAlign="center">Home</Typography></Link>
+                  <Typography textAlign="center">Home</Typography>
                 </MenuItem>
+              </Link>
+
+              <Link
+                to={'/store'}
+                style={{ textDecoration: 'none', color: 'black' }}
+              >
                 <MenuItem onClick={btnLogOut}>
-                  <Link to={"/store"}><Typography textAlign="center">Store</Typography></Link>
+                  <Typography textAlign="center">Store</Typography>
                 </MenuItem>
+              </Link>
             </Menu>
           </Box>
           <Typography
@@ -100,18 +105,36 @@ const ResponsiveAppBar = (props) => {
             TRAINET
           </Typography>
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
-                            <MenuItem onClick={handleCloseNavMenu}>
-                  <Link to={"/"}><Typography textAlign="center">Home</Typography></Link>
-                </MenuItem>
-                <MenuItem>
-                  <Link to={"/store"}><Typography textAlign="center">Store</Typography></Link>
-                </MenuItem>
+            <Link to={'/'} style={{ textDecoration: 'none', color: 'black' }}>
+              <MenuItem onClick={handleCloseNavMenu}>
+                <Typography textAlign="center">Home</Typography>
+              </MenuItem>
+            </Link>
+
+            <Link
+              to={'/store'}
+              style={{ textDecoration: 'none', color: 'black' }}
+            >
+              <MenuItem>
+                <Typography textAlign="center">Store</Typography>
+              </MenuItem>
+            </Link>
           </Box>
 
           <Box sx={{ flexGrow: 0 }}>
             <Tooltip title="Open settings">
-              <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                <Avatar alt="Nico" src="/static/images/avatar/1.jpg" />
+              <IconButton
+                onClick={handleOpenUserMenu}
+                sx={{ p: 0 }}
+                size="large"
+                aria-label="account of current user"
+                aria-controls="menu-appbar"
+                aria-haspopup="true"
+                // onClick={handleMenu}
+                color="inherit"
+              >
+                <AccountCircle />
+                {/* <Avatar alt="Nico" src="/static/images/avatar/1.jpg" /> */}
               </IconButton>
             </Tooltip>
             <Menu
@@ -130,16 +153,35 @@ const ResponsiveAppBar = (props) => {
               open={Boolean(anchorElUser)}
               onClose={handleCloseUserMenu}
             >
-
-                <MenuItem onClick={handleCloseNavMenu}>
-                  <Link to={"/profile"}><Typography textAlign="center">Profile</Typography></Link>
-                </MenuItem>
-                <MenuItem onClick={handleCloseNavMenu}>
-                  <Link to={"/signin"}><Typography textAlign="center">SignIn</Typography></Link>
-                </MenuItem>
-                  <MenuItem onClick={btnLogOut}>
+              {user ? (
+                <Link
+                  to={'/profile'}
+                  style={{ textDecoration: 'none', color: 'black' }}
+                >
+                  <MenuItem onClick={handleCloseNavMenu}>
+                    <Typography textAlign="center">Profile</Typography>
+                  </MenuItem>
+                </Link>
+              ) : (
+                <Link
+                  to={'/signin'}
+                  style={{ textDecoration: 'none', color: 'black' }}
+                >
+                  <MenuItem onClick={handleCloseNavMenu}>
+                    <Typography textAlign="center">SignIn</Typography>
+                  </MenuItem>
+                </Link>
+              )}
+              {user ? (
+                <MenuItem
+                  onClick={btnLogOut}
+                  style={{ textDecoration: 'none', color: 'black' }}
+                >
                   <Typography textAlign="center">Logout</Typography>
                 </MenuItem>
+              ) : (
+                ''
+              )}
             </Menu>
           </Box>
         </Toolbar>

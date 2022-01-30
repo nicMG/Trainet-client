@@ -1,41 +1,88 @@
 .all {
   display: flex;
   flex-wrap: wrap;
-  margin-top: 15px;
+  margin-top: 5vh;
+  margin-bottom: 10vh;
   justify-content: center;
   align-items: center;
   flex-direction: column;
 }
 
-.ProfileCard {
-  max-width: 600px;
-}
-
 .ProfileCard img {
-  width: 450;
-  height: 450;
+  min-width: 270px;
+  width: 35vw;
   border-radius: 5px;
 }
 
 .header {
+  background-color: white;
+  margin-top: 3vh;
   display: flex;
+  padding: 2rem;
+  border: #3e1c13 2px solid;
+  border-radius: 10px;
+  box-shadow: 5px 10px #3e1c13;
+}
+
+.Profile-name {
+  margin: 1rem 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border: #3e1c13 2px solid;
+  border-radius: 7px;
+  background-color: #f8c63c;
 }
 
 .stats {
-  position: relative;
-  top: 70px;
-  right: 20px;
+  /* background-color: violet; */
+  margin: 1rem;
+}
+
+.Profile-name h1 {
+  margin-left: 1rem;
+  font-size: 75px;
+}
+
+.Profile-edit {
+  margin-top: 1em;
+  margin-right: 2em;
 }
 
 .routines-list {
-  margin-top: 20px;
+  background-color: #3e1c13;
   min-width: 650px;
+  padding: 1em;
+  border: #3e1c13 5px solid;
+  border-radius: 5px;
+  box-shadow: 5px 10px white;
+  margin-bottom: 10vh;
 }
 
 .routine-item {
-  margin: 5px;
+  margin: 1.5em 0;
 }
 
 .routine-btn {
+  background-color: white;
+  padding: 1.2rem;
+  width: 600px;
   margin-top: 70px;
+  border: #3e1c13 2px solid;
+  border-radius: 7px;
+  box-shadow: 5px 10px #3e1c13;
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 3rem;
+}
+
+.routine-btn-btn {
+  background-color: #3e1c13;
+  font-size: 1.5em;
+  padding: 0.75rem;
+  border-radius: 10px;
+}
+
+.routine-btn-btn:hover {
+  background-color: #f8c63c;
 }
