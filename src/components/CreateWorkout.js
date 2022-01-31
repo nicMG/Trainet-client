@@ -9,9 +9,8 @@ import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
-import { Link } from 'react-router-dom';
-import { InputLabel, MenuItem, Select } from '@mui/material';
 import './CreateWorkout.css';
+import TextEditor from './TextEditor';
 
 const theme = createTheme();
 
@@ -38,7 +37,7 @@ function CreateWorkout(props) {
           >
             {/* <form onSubmit={btnSubmit}> */}
             <Typography component="h1" variant="h4">
-              <h1>Create workout</h1>
+              <h1>CREATE WORKOUT</h1>
             </Typography>
             <Box
               component="form"
@@ -50,7 +49,8 @@ function CreateWorkout(props) {
                 className="edit-textfield"
                 margin="normal"
                 required
-                fullwidth="true"
+                // fullwidth="true"
+                style={{ width: '70vw' }}
                 id="name"
                 label="Enter name"
                 name="name"
@@ -62,6 +62,7 @@ function CreateWorkout(props) {
                 margin="normal"
                 required
                 fullwidth="true"
+                style={{ width: '70vw' }}
                 name="shortDescription"
                 label="Enter a short description"
                 type="shortDescription"
@@ -70,17 +71,19 @@ function CreateWorkout(props) {
                 helperText={props.myError ? props.myError : ''}
                 error={props.myError ? true : false}
               />
-              <TextField
+              {/* <TextField
                 className="edit-textfield"
                 margin="normal"
                 required
                 fullwidth="true"
+                style={{ width: '70vw' }}
                 id="description"
                 label="Enter a description"
                 name="description"
                 autoComplete="description"
                 autoFocus
-              />
+              /> */}
+              <TextEditor />
               <div className="img-box-create">
                 <input
                   type="file"
@@ -88,6 +91,7 @@ function CreateWorkout(props) {
                   accept="image/png, image/jpg"
                 />
               </div>
+
               <div>
                 <Button
                   type="submit"

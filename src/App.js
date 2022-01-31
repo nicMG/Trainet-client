@@ -88,23 +88,23 @@ function App() {
 
   const handleCreateWk = async (event) => {
     event.preventDefault();
+    console.log(user);
+    // let imageForm = new FormData();
+    // imageForm.append('imageUrl', event.target.myImage.files[0]);
+    // let imgResponse = await axios.post(`${API_URL}/upload`, imageForm);
+    // // console.log(event.target.name.value)
 
-    let imageForm = new FormData();
-    imageForm.append('imageUrl', event.target.myImage.files[0]);
-    let imgResponse = await axios.post(`${API_URL}/upload`, imageForm);
-    // console.log(event.target.name.value)
-
-    let newWorkOut = {
-      name: event.target.name.value,
-      shortDescription: event.target.shortDescription.value,
-      description: event.target.description.value,
-      image: imgResponse.data.image,
-    };
-    let response = await axios.post(`${API_URL}/workouts/create`, newWorkOut, {
-      withCredentials: true,
-    });
-    setWorkOuts([response.data, ...workOuts]);
-    navigate('/store');
+    // let newWorkOut = {
+    //   name: event.target.name.value,
+    //   shortDescription: event.target.shortDescription.value,
+    //   description: event.target.description.value,
+    //   image: imgResponse.data.image,
+    // };
+    // let response = await axios.post(`${API_URL}/workouts/create`, newWorkOut, {
+    //   withCredentials: true,
+    // });
+    // setWorkOuts([response.data, ...workOuts]);
+    // navigate('/store');
   };
 
   const handleEditProfile = async (event, id) => {
