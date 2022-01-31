@@ -7,6 +7,7 @@ import { UserContext } from '../context/app.context';
 import Rating from '@mui/material/Rating';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
+import parse from 'html-react-parser';
 import './ItemDetails.css';
 
 function ItemDetails(props) {
@@ -52,7 +53,7 @@ function ItemDetails(props) {
         </div>
       </div>
       <div className="detail-text">
-        <p>{workout.description}</p>
+        <p>{parse(workout.description)}</p>
       </div>
     </div>
   );

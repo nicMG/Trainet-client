@@ -11,12 +11,12 @@ import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import './CreateWorkout.css';
 import TextEditor from './TextEditor';
-
+import { EditorContext } from '../context/editor.context';
 const theme = createTheme();
 
 function CreateWorkout(props) {
   const { btnSubmit } = props;
-
+  const { editorText, setEditorText } = useContext(EditorContext);
   return (
     <div className="create-main">
       {/* <input  name="name"  type="text"  placeholder="Enter name"/>
