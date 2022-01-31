@@ -8,6 +8,7 @@ import Rating from '@mui/material/Rating';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 import './ItemDetails.css';
+import parse from 'html-react-parser';
 
 function YourWorkouts(props) {
   const { id } = useParams();
@@ -42,7 +43,7 @@ function YourWorkouts(props) {
         </div>
       </div>
       <div className="your-wk-text">
-        <p>{workout.description}</p>
+        <p>{parse(workout.description)}</p>
       </div>
     </div>
   );

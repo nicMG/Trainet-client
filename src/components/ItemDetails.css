@@ -1,6 +1,6 @@
 .detail-img {
   border-radius: 5px;
-  /* max-width: 20vw; */
+  max-width: 50vw;
 }
 
 .detail-header {
@@ -37,6 +37,7 @@
 }
 
 .detail-text {
+  background-color: blanchedalmond;
   margin-top: 25vh;
   margin-bottom: 15vh;
   max-width: 60vw;
@@ -47,6 +48,7 @@
 }
 
 .your-wk-text {
+  background-color: blanchedalmond;
   margin-top: 5vh;
   margin-bottom: 15vh;
   max-width: 60vw;
